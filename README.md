@@ -13,6 +13,16 @@ whether running the machine locally in KVM, VirtualBox, or on a XenServer host.
 This repository and guide aims to make this task a lot easier by pre-seeding a 
 template and script. It draws heavily on existing resources ([2][2], [3][3]).
 
+## Special K3os version
+[K3os][5] is Rancher Labs bespoke operating system for running the tiny K8s distro [k3s][6].
+When configured to use `cloud-init` with `k3os.data_sources=cdrom`, the embedded version
+of linuxkit/metadata is requiring a file called `config` in the top level of the ISO.
+
+That's why this fork is needed: create a hardlink from `user-data` to `config`
+before making the ISO image. (Bonus: use mkisofs for Suse Linux)
+
+Example: run `k3os-build.sh K3os-091-a` to generate an ISO file called `cidata-K3os-091-a.iso`
+
 ## Dependencies
 You need `genisoimage` installed. For RHEL, CentOS, Fedora, Oracle Linux, etc.,
 `sudo dnf install genisoimage` (use `yum` if you are on RHEL/CentOS/OL 7). For 
@@ -45,3 +55,5 @@ see `LICENSE`.
 [2]: https://www.technovelty.org/linux/running-cloud-images-locally.html
 [3]: http://www.projectatomic.io/blog/2014/10/getting-started-with-cloud-init/
 [4]: https://cloudinit.readthedocs.io/en/latest/topics/examples.html
+[5]: https://github.com/rancher/k3os
+[6]: https://github.com/rancher/k3s
