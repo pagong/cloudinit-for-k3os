@@ -14,12 +14,12 @@ This repository and guide aims to make this task a lot easier by pre-seeding a
 template and script. It draws heavily on existing resources ([2][2], [3][3]).
 
 ## Special K3os version
-[K3os][5] is Rancher Labs bespoke operating system for running the tiny K8s distro [k3s][6].
+[K3os][5] is Rancher Labs' bespoke operating system for running the tiny K8s distro [k3s][6].
 When configured to use `cloud-init` with `k3os.data_sources=cdrom`, the embedded version
 of linuxkit/metadata is requiring a file called `config` in the top level of the ISO.
 
-That's why this fork is needed: create a hardlink from `user-data` to `config`
-before making the ISO image. (Bonus: use mkisofs for Suse Linux)
+That's why this fork is needed: create a hard link from `user-data` to `config`
+before making the ISO image. (Bonus info: use mkisofs for Suse Linux)
 
 Example: run `k3os-build.sh K3os-091-a` to generate an ISO file called `cidata-K3os-091-a.iso`
 
