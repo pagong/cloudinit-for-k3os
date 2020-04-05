@@ -19,7 +19,7 @@ When configured to use `cloud-init` with `k3os.data_sources=cdrom`, the embedded
 of linuxkit/metadata is requiring a file called `config` in the top level of the ISO.
 
 That's why this fork is needed: create a hard link from `user-data` to `config`
-before making the ISO image. (Bonus info: use mkisofs for Suse Linux)
+before making the ISO image. (Bonus info: for Suse Linux use `mkisofs`.)
 
 Example: run `k3os-build.sh K3os-091-a` to generate an ISO file called `cidata-K3os-091-a.iso`
 
