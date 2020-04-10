@@ -27,12 +27,12 @@ CMD=genisoimage
 # which expects a file called 'config' at the top level.
 (
 cd $ARG
-rm config
+rm -f config
 ln user-data config
 
 $CMD	 -output ../$FILENAME -volid "cidata" -joliet -rock	\
 	config user-data meta-data network-config		\
-	2>build.log
+	2> ../build.log
 )
 
 FILESIZE=$(stat -c %s $FILENAME 2>/dev/null)
